@@ -14,7 +14,22 @@ describe ('findHand') do
 end
 
 describe ("handName") do
-  it("takes the findhand locations and returns their word value") do
+  it("takes the findhand locations and returns their word value for a flush") do
     handName([[0,0],[2,0],[4,0],[6,0],[8,0]]).should(eq("flush"))
+  end
+  it("takes the findhand locations and returns their word value for four/three/pair of a kind") do
+    handName([[0,0],[0,1],[0,2],[0,3],[1,0]]).should(eq("four of a kind"))
+  end
+  it("takes the findHand locations and returns full house if there is both 3 of a kind and a pair") do
+    handName([[0,0],[0,1],[0,2],[1,3],[1,0]]).should(eq("fullhouse"))
+  end
+  it("takes the findHand locations and returns two pair if there is more than one pair, and not a full house") do
+    handName([[0,0],[0,1],[1,2],[1,3],[3,0]]).should(eq("two pair"))
+  end
+  it("takes the findhand locations and returns striaght if all values are in sequential order") do
+    handName([[0,0],[1,1],[2,2],[3,3],[4,0]]).should(eq("straight"))
+  end
+  it("takes the findhand locations and returns striaghtflush if all values are in sequential order and of the same suit") do
+    handName([[0,0],[1,0],[2,0],[3,0],[4,0]]).should(eq("straightflush"))
   end
 end

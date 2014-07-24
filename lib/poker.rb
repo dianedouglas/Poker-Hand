@@ -24,15 +24,51 @@ def handName handLocation
   end
 
   handPlay = ""
-
-  cardSuits.each do |cardSuit|
-     if cardSuits.count(cardSuit) == 5
-      handPlay = "flush"
+  handFlush = ""
+  cardValues.each do |cardValue|
+    if cardValues.count(cardValue) == 4
+      handPlay = "four of a kind"
+    elsif cardValues.count(cardValue) == 3
+      leftovers = cardValues
+      leftovers.delete(cardValue)
+      if leftovers[0] == leftovers[1]
+        handPlay = "fullhouse"
+        break
+      else
+        handPlay = "three of a kind"
+        break
+      end
+    elsif cardValues.count(cardValue) == 2
+      leftovers = cardValues
+      leftovers.delete(cardValue)
+      if leftovers[0] == leftovers[1] || leftovers[0] == leftovers[2] || leftovers[1] == leftovers[2]
+        handPlay = "two pair"
+        break
+      else
+      handPlay = "pair"
+      end
+    else
+      cardValues.sort!
+      if cardValues[0] == cardValues[1]-1 && cardValues[1] == cardValues[2]-1 && cardValues[2] == cardValues[3]-1 && cardValues[3] == cardValues[4]-1
+        handPlay = "straight"
+        if cardValues[0] == 8
+          handPlay = "royal straight"
+        end
+      end
     end
   end
 
-  handPlay
+  cardSuits.each do |cardSuit|
+     if cardSuits.count(cardSuit) == 5
+      handFlush = "flush"
+    end
+  end
+
+puts handPlay + handFlush
+handPlay + handFlush
 
 end
 #0 0 0 0 1
-handName [[0,0],[2,0],[4,0],[6,0],[8,0]]
+findHand ["10h" , "jh" , "qh" , "kh" , "ah"]
+
+
