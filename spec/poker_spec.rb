@@ -3,7 +3,7 @@ require ('poker')
 
 describe ('cardLocation') do
   it("takes a card and returns its location via 2 arrays") do
-    cardLocation("2h").should(eq([0,0]))
+    cardLocation("10h").should(eq([8,0]))
   end
 end
 

@@ -1,8 +1,12 @@
 def cardLocation card
   cardValue = ["2", "3", "4", "5", "6", "7", "8", "9", "10", "j", "q", "k", "a"]
   cardSuit = ["h", "c", "d", "s"]
-  cardInput = card.split("")
   cardOutput = []
+  cardInput = []
+
+  cardInput[1] = card.slice(-1)
+  card.slice!(-1)
+  cardInput[0] = card
   cardOutput << cardValue.index(cardInput[0]) << cardSuit.index(cardInput[1])
   cardOutput
 end
@@ -12,6 +16,7 @@ def findHand cards
   cards.each do |card|
     handLocation << cardLocation(card)
   end
+  handName handLocation
   handLocation
 end
 
