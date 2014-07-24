@@ -1,6 +1,12 @@
 require ('rspec')
 require ('poker')
 
+# describe 'poker_hand' do
+#   it 'can detect a single pair' do
+#     poker_hand(["2s", "5s", "7s", "9s", "js"]).should(eq('flush'))
+#   end
+# end
+
 describe ('cardLocation') do
   it("takes a card and returns its location via 2 arrays") do
     cardLocation("10h").should(eq([8,0]))

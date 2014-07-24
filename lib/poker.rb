@@ -16,8 +16,7 @@ def findHand cards
   cards.each do |card|
     handLocation << cardLocation(card)
   end
-  handName handLocation
-  handLocation
+  handName(handLocation)
 end
 
 def handName handLocation
@@ -50,7 +49,7 @@ def handName handLocation
         handPlay = "two pair"
         break
       else
-      handPlay = "pair"
+        handPlay = "pair"
       end
     else
       cardValues.sort!
